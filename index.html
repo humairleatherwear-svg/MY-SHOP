@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban Stitch – Bags, Jackets & Hoodies</title>
+<meta name="description" content="Urban Stitch: shop bags, jackets, hoodies and more. Quality streetwear delivered to your door.">
+<meta property="og:title" content="Urban Stitch – Bags, Jackets & Hoodies">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7f4;--ink:#14201f;--brand:#0f3d3e;--accent:#f2a900;--card:#fff;--cols:4;--hero:70vh;--radius:10px;--font:'Inter',system-ui,sans-serif;--head:'Archivo Black',Impact,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.5}
+h1,h2,h3,.logo{font-family:var(--head);font-weight:400}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 5%;background:var(--brand);color:#fff;position:sticky;top:0;z-index:20;flex-wrap:wrap}
+.logo{font-size:1.5rem;color:#fff;text-decoration:none}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button,.btn{font:inherit;cursor:pointer;border:0;border-radius:var(--radius);padding:8px 14px;background:transparent;color:inherit}
+nav button{color:#fff}
+nav button.on,nav button:hover{background:var(--accent);color:#000}
+.btn{background:var(--accent);color:#000;font-weight:600}
+.btn.alt{background:#e4e7e2}
+.btn.red{background:#c0392b;color:#fff}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.slider{position:relative;height:var(--hero);overflow:hidden;background:#000}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s;display:flex;align-items:center;padding:0 8%;color:#fff;background-size:cover;background-position:center}
+.slide.on{opacity:1}
+.slide video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.6),transparent 70%)}
+.slide div{position:relative;max-width:520px}
+.slide h1{font-size:clamp(2rem,6vw,4rem);line-height:1.05;margin-bottom:10px}
+.slide p{margin-bottom:18px;font-size:1.1rem}
+.dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px}
+.dots i{width:10px;height:10px;border-radius:50%;background:#fff6;cursor:pointer}
+.dots i.on{background:var(--accent)}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:#0008;color:#fff;border:0;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.2rem}
+.arrow.l{left:12px}.arrow.r{right:12px}
+main{padding:36px 5%}
+main h2{font-size:1.8rem;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(var(--cols),1fr);gap:18px}
+.card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 3px #0002;display:flex;flex-direction:column}
+.card .img{aspect-ratio:1;background:#dfe5e1 center/cover;display:grid;place-items:center;font-size:3rem}
+.card .b{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card small{color:#667}
+.price{font-weight:600;color:var(--brand)}
+.card a.btn{margin-top:auto;text-align:center;text-decoration:none;display:block}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:34px}
+.cat{background:var(--brand);color:#fff;border-radius:var(--radius);padding:26px 14px;text-align:center;cursor:pointer;font-family:var(--head);border:0;font-size:1.05rem}
+.cat:hover{background:var(--accent);color:#000}
+footer{background:var(--ink);color:#cfd6d2;padding:28px 5%;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer button{background:none;border:0;color:#8a9490;cursor:pointer;font:inherit}
+.modal{position:fixed;inset:0;background:#000a;z-index:50;display:none;overflow:auto;padding:20px}
+.modal.on{display:block}
+.panel{background:#fff;max-width:880px;margin:0 auto;border-radius:var(--radius);padding:20px}
+.panel h3{margin:18px 0 8px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.tabs button{padding:8px 12px;border:0;border-radius:8px;background:#e4e7e2;cursor:pointer;font:inherit}
+.tabs button.on{background:var(--brand);color:#fff}
+label{display:block;font-size:.85rem;margin:8px 0 2px;color:#456}
+input,select,textarea{width:100%;padding:8px;border:1px solid #bcc5c0;border-radius:8px;font:inherit}
+input[type=color]{padding:2px;height:38px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.item{border:1px solid #d5dbd7;border-radius:8px;padding:10px;margin:8px 0}
+.item .acts{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+@media(max-width:900px){:root{--cols:2!important}}
+@media(prefers-reduced-motion:reduce){.slide{transition:none}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#" id="logo">Urban Stitch</a>
+  <nav id="nav"></nav>
+</header>
+<section class="slider" id="slider" aria-label="Featured"></section>
+<main>
+  <div class="cats" id="cats"></div>
+  <h2 id="ptitle">All products</h2>
+  <div class="grid" id="grid"></div>
+</main>
+<footer>
+  <div id="contact"></div>
+  <span></span>
+</footer>
+
+<div class="modal" id="modal"><div class="panel" id="panel"></div></div>
+
+<script>
+/* ---------- Default data (admin se badal sakte hain) ---------- */
+const DEFAULT={
+ settings:{name:"Urban Stitch",whatsapp:"923000000000",contact:"WhatsApp: 0300 0000000 · Email: shop@example.com",
+  brand:"#0f3d3e",accent:"#f2a900",bg:"#f6f7f4",ink:"#14201f",cols:4,hero:70,radius:10,
+  headFont:"Archivo Black",bodyFont:"Inter",interval:5,currency:"Rs."},
+ categories:["Bags","Jackets","Hoodies"],
+ slides:[
+  {type:"image",src:"",bg:"#0f3d3e",title:"Winter hoodies are here",text:"Warm, soft and made to last.",btn:"Shop hoodies",cat:"Hoodies"},
+  {type:"image",src:"",bg:"#7a3b1d",title:"Jackets for every day",text:"Leather, denim and puffer styles.",btn:"Shop jackets",cat:"Jackets"},
+  {type:"image",src:"",bg:"#2c3e66",title:"Carry it your way",text:"Backpacks, totes and travel bags.",btn:"Shop bags",cat:"Bags"}],
+ products:[
+  {id:1,name:"Classic Black Hoodie",cat:"Hoodies",price:3200,img:"",desc:"Fleece lined pullover hoodie."},
+  {id:2,name:"Zip Hoodie Grey",cat:"Hoodies",price:3600,img:"",desc:"Full zip, two pockets."},
+  {id:3,name:"Denim Jacket",cat:"Jackets",price:5500,img:"",desc:"Washed blue denim jacket."},
+  {id:4,name:"Puffer Jacket",cat:"Jackets",price:7200,img:"",desc:"Water resistant, very warm."},
+  {id:5,name:"Travel Backpack",cat:"Bags",price:4200,img:"",desc:"30L with laptop sleeve."},
+  {id:6,name:"Canvas Tote",cat:"Bags",price:1800,img:"",desc:"Strong everyday tote."}]
+};
+let D=null,cur="All",admin=false,idx=0,timer;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+async function load(){
+  try{const r=await fetch("/api/data",{cache:"no-store"});if(r.ok){const j=await r.json();if(j&&j.settings)D=j}}catch(e){}
+  if(!D)D=JSON.parse(JSON.stringify(DEFAULT));
+  render();
+}
+let dirty=false;
+function save(){dirty=true;render();const b=$("#pub");if(b)b.textContent="Publish changes *"}
+async function publish(){
+  const b=$("#pub");b.disabled=true;b.textContent="Publishing...";
+  try{const r=await fetch("/api/data",{method:"PUT",headers:{"content-type":"application/json","x-admin-password":PW},body:JSON.stringify(D)});
+    if(r.ok){dirty=false;b.textContent="Published ✓"}else{b.textContent="Failed ("+r.status+")";if(r.status==401){admin=false;PW="";alert("Session expired. Login again.");close()}}}
+  catch(e){b.textContent="Network error"}
+  b.disabled=false;setTimeout(()=>{if($("#pub"))$("#pub").textContent=dirty?"Publish changes *":"Publish changes"},2500);
+}
+function theme(){
+  const s=D.settings,r=document.documentElement.style;
+  r.setProperty("--brand",s.brand);r.setProperty("--accent",s.accent);r.setProperty("--bg",s.bg);r.setProperty("--ink",s.ink);
+  r.setProperty("--cols",s.cols);r.setProperty("--hero",s.hero+"vh");r.setProperty("--radius",s.radius+"px");
+  r.setProperty("--head",`'${s.headFont}',Impact,sans-serif`);r.setProperty("--font",`'${s.bodyFont}',system-ui,sans-serif`);
+  const f=[s.headFont,s.bodyFont].filter((v,i,a)=>a.indexOf(v)==i).map(x=>"family="+x.replace(/ /g,"+")).join("&");
+  let l=$("#gf");if(!l){l=document.createElement("link");l.id="gf";l.rel="stylesheet";document.head.appendChild(l)}
+  l.href="https://fonts.googleapis.com/css2?"+f+"&display=swap";
+  $("#logo").textContent=s.name;document.title=s.name+" – "+D.categories.join(", ");
+}
+function render(){
+  theme();
+  const s=D.settings;
+  $("#nav").innerHTML=["All",...D.categories].map(c=>`<button class="${c==cur?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+  $("#cats").innerHTML=D.categories.map(c=>`<button class="cat" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+  const list=D.products.filter(p=>cur=="All"||p.cat==cur);
+  $("#ptitle").textContent=cur=="All"?"All products":cur;
+  $("#grid").innerHTML=list.length?list.map(p=>{
+    const msg=encodeURIComponent(`Hi, I want to order: ${p.name} (${s.currency} ${p.price})`);
+    return `<article class="card"><div class="img" style="${p.img?`background-image:url('${esc(p.img)}')`:''}">${p.img?'':'🛍️'}</div><div class="b"><small>${esc(p.cat)}</small><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="price">${esc(s.currency)} ${esc(p.price)}</div><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${esc(s.whatsapp)}?text=${msg}">Order on WhatsApp</a></div></article>`}).join(""):"<p>No products in this category yet.</p>";
+  $("#contact").textContent=s.contact;
+  slider();
+}
+function slider(){
+  const sl=D.slides,el=$("#slider");clearInterval(timer);
+  if(idx>=sl.length)idx=0;
+  el.innerHTML=sl.map((x,i)=>`<div class="slide ${i==idx?'on':''}" style="${x.type=='image'?(x.src?`background-image:url('${esc(x.src)}')`:`background:${esc(x.bg||'#0f3d3e')}`):'background:#000'}">${x.type=='video'&&x.src?`<video src="${esc(x.src)}" autoplay muted loop playsinline></video>`:''}<div><h1>${esc(x.title)}</h1><p>${esc(x.text)}</p>${x.btn?`<button class="btn" data-go="${esc(x.cat||'All')}">${esc(x.btn)}</button>`:''}</div></div>`).join("")
+   +`<button class="arrow l" aria-label="Previous">‹</button><button class="arrow r" aria-label="Next">›</button><div class="dots">${sl.map((_,i)=>`<i class="${i==idx?'on':''}" data-i="${i}"></i>`).join("")}</div>`;
+  if(sl.length>1)timer=setInterval(()=>go(idx+1),(D.settings.interval||5)*1000);
+}
+function go(n){const sl=D.slides;idx=(n+sl.length)%sl.length;
+  document.querySelectorAll(".slide").forEach((e,i)=>e.classList.toggle("on",i==idx));
+  document.querySelectorAll(".dots i").forEach((e,i)=>e.classList.toggle("on",i==idx));}
+document.addEventListener("click",e=>{
+  const t=e.target;
+  if(t.dataset.c!==undefined){cur=t.dataset.c;render();$("#ptitle").scrollIntoView({behavior:"smooth"})}
+  if(t.dataset.go!==undefined){cur=t.dataset.go;render();$("#ptitle").scrollIntoView({behavior:"smooth"})}
+  if(t.dataset.i!==undefined)go(+t.dataset.i);
+  if(t.classList.contains("arrow"))go(idx+(t.classList.contains("r")?1:-1));
+});
+
+/* ---------- Admin ---------- */
+let PW="";
+function openAdmin(){if(location.hash!=="#admin")return;$("#modal").classList.add("on");admin?panel("settings"):login()}
+addEventListener("hashchange",openAdmin);addEventListener("load",openAdmin);
+function close(){$("#modal").classList.remove("on");history.replaceState(null,"",location.pathname)}
+function login(){
+  $("#panel").innerHTML=`<h3>Admin login</h3><label>Password</label><input type="password" id="pw" autocomplete="current-password"><p style="margin-top:12px"><button class="btn" id="ok">Login</button> <button class="btn alt" id="cl">Cancel</button></p><p id="err" style="color:#c0392b"></p>`;
+  $("#cl").onclick=close;
+  const go=async()=>{const v=$("#pw").value;$("#ok").disabled=true;
+    try{const r=await fetch("/api/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({password:v})});
+      if(r.ok){PW=v;admin=true;panel("settings");return}
+      $("#err").textContent=r.status==404?"Backend not set up yet (see setup steps).":"Wrong password."}
+    catch(e){$("#err").textContent="Cannot reach server."}
+    $("#ok").disabled=false};
+  $("#ok").onclick=go;$("#pw").onkeydown=e=>{if(e.key=="Enter")go()};$("#pw").focus();
+}
+function shrink(file,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const m=1000,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.8))};im.src=r.result};r.readAsDataURL(file)}
+const TABS=[["settings","Settings"],["theme","Theme & layout"],["slides","Slides"],["cats","Categories"],["products","Products"],["data","Save / Publish"]];
+function panel(tab){
+  const s=D.settings;let h=`<div style="display:flex;justify-content:space-between"><h3 style="margin:0">Admin panel</h3><div><button class="btn" id="pub">Publish changes</button> <button class="btn alt" id="lo">Logout</button> <button class="btn" id="x">Close</button></div></div><div class="tabs">${TABS.map(t=>`<button class="${t[0]==tab?'on':''}" data-t="${t[0]}">${t[1]}</button>`).join("")}</div>`;
+  const inp=(l,k,type="text")=>`<div><label>${l}</label><input type="${type}" data-s="${k}" value="${esc(s[k])}"></div>`;
+  if(tab=="settings")h+=`<div class="row">${inp("Shop name","name")}${inp("WhatsApp number (92300...)","whatsapp")}${inp("Currency","currency")}${inp("Footer contact text","contact")}</div><p style="margin-top:14px;color:#456">To change the admin password, update ADMIN_PASSWORD in Cloudflare (Settings → Variables and Secrets).</p>`;
+  if(tab=="theme")h+=`<div class="row">${inp("Main color","brand","color")}${inp("Accent color","accent","color")}${inp("Background","bg","color")}${inp("Text color","ink","color")}${inp("Products per row (desktop)","cols","number")}${inp("Slider height (vh)","hero","number")}${inp("Corner roundness (px)","radius","number")}${inp("Slide time (seconds)","interval","number")}
+   <div><label>Heading font</label><select data-s="headFont">${["Archivo Black","Bebas Neue","Playfair Display","Oswald","Poppins","Rubik"].map(f=>`<option ${f==s.headFont?'selected':''}>${f}</option>`).join("")}</select></div>
+   <div><label>Body font</label><select data-s="bodyFont">${["Inter","Poppins","Roboto","Lato","Nunito"].map(f=>`<option ${f==s.bodyFont?'selected':''}>${f}</option>`).join("")}</select></div></div>
+   <h3>Quick themes</h3><p>${[["Teal & gold","#0f3d3e","#f2a900","#f6f7f4"],["Midnight","#111827","#38bdf8","#f3f4f6"],["Rose","#7f1d3a","#fb7185","#fff5f6"],["Forest","#1f3d2b","#a3e635","#f4f7f2"]].map(t=>`<button class="btn alt" data-th="${t.slice(1)}">${t[0]}</button>`).join(" ")}</p>`;
+  if(tab=="slides"){h+=D.slides.map((x,i)=>`<div class="item"><div class="row">
+    <div><label>Type</label><select data-sl="${i}.type"><option ${x.type=='image'?'selected':''}>image</option><option ${x.type=='video'?'selected':''}>video</option></select></div>
+    <div><label>Image or video link (mp4)</label><input data-sl="${i}.src" value="${x.src&&x.src.startsWith('data:')?'':esc(x.src)}" placeholder="${x.src&&x.src.startsWith('data:')?'Uploaded photo':''}"><input type="file" accept="image/*" data-fs="${i}"></div>
+    <div><label>Fallback color</label><input type="color" data-sl="${i}.bg" value="${esc(x.bg||'#0f3d3e')}"></div>
+    <div><label>Title</label><input data-sl="${i}.title" value="${esc(x.title)}"></div>
+    <div><label>Text</label><input data-sl="${i}.text" value="${esc(x.text)}"></div>
+    <div><label>Button text</label><input data-sl="${i}.btn" value="${esc(x.btn)}"></div>
+    <div><label>Button opens category</label><select data-sl="${i}.cat">${["All",...D.categories].map(c=>`<option ${c==x.cat?'selected':''}>${esc(c)}</option>`).join("")}</select></div></div>
+    <div class="acts"><button class="btn alt" data-up="${i}">↑</button><button class="btn alt" data-dn="${i}">↓</button><button class="btn red" data-ds="${i}">Delete</button></div></div>`).join("")+`<button class="btn" id="as">+ Add slide</button>`;}
+  if(tab=="cats")h+=D.categories.map((c,i)=>`<div class="item row"><input data-cat="${i}" value="${esc(c)}"><div class="acts"><button class="btn red" data-dc="${i}">Delete</button></div></div>`).join("")+`<p><button class="btn" id="ac">+ Add category</button></p>`;
+  if(tab=="products"){h+=D.products.map((p,i)=>`<div class="item"><div class="row">
+    <div><label>Name</label><input data-p="${i}.name" value="${esc(p.name)}"></div>
+    <div><label>Category</label><select data-p="${i}.cat">${D.categories.map(c=>`<option ${c==p.cat?'selected':''}>${esc(c)}</option>`).join("")}</select></div>
+    <div><label>Price</label><input type="number" data-p="${i}.price" value="${esc(p.price)}"></div>
+    <div><label>Image (link or upload)</label><input data-p="${i}.img" value="${p.img&&p.img.startsWith('data:')?'':esc(p.img)}" placeholder="${p.img&&p.img.startsWith('data:')?'Uploaded photo':''}"><input type="file" accept="image/*" data-fp="${i}"></div>
+    <div><label>Description</label><input data-p="${i}.desc" value="${esc(p.desc)}"></div></div>
+    <div class="acts"><button class="btn red" data-dp="${i}">Delete</button></div></div>`).join("")+`<button class="btn" id="ap">+ Add product</button>`;}
+  if(tab=="data")h+=`<p>Edit anything, then press <b>Publish changes</b> (top). It goes live for all visitors immediately.</p><p><button class="btn alt" id="dl">Download backup (JSON)</button></p><label>Restore from backup</label><input type="file" id="imp" accept=".json"><p style="margin-top:14px"><button class="btn red" id="rs">Reset to default</button></p>`;
+  $("#panel").innerHTML=h;
+  $("#x").onclick=close;$("#lo").onclick=()=>{admin=false;close()};
+  const rp=()=>panel(tab);
+  const on=(id,f)=>{const e=$(id);if(e)e.onclick=f};
+  on("#pub",publish);
+  on("#as",()=>{D.slides.push({type:"image",src:"",bg:"#333333",title:"New slide",text:"",btn:"",cat:"All"});save();rp()});
+  on("#ac",()=>{D.categories.push("New category");save();rp()});
+  on("#ap",()=>{D.products.unshift({id:Date.now(),name:"New product",cat:D.categories[0]||"",price:0,img:"",desc:""});save();rp()});
+  on("#dl",()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(D,null,1)],{type:"application/json"}));a.download="site-data.json";a.click()});
+  on("#rs",()=>{if(confirm("Reset everything?")){D=JSON.parse(JSON.stringify(DEFAULT));save();rp()}});
+  const imp=$("#imp");if(imp)imp.onchange=e=>{const r=new FileReader();r.onload=()=>{try{D=JSON.parse(r.result);save();rp()}catch(x){alert("Invalid file")}};r.readAsText(e.target.files[0])};
+  document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>panel(b.dataset.t));
+  document.querySelectorAll("[data-s]").forEach(i=>i.oninput=()=>{D.settings[i.dataset.s]=i.type=="number"?+i.value:i.value;save()});
+  document.querySelectorAll("[data-th]").forEach(b=>b.onclick=()=>{const[a,c,d]=b.dataset.th.split(",");Object.assign(D.settings,{brand:a,accent:c,bg:d});save();rp()});
+  const bind=(sel,arr)=>document.querySelectorAll(`[data-${sel}]`).forEach(i=>{const f=()=>{const[n,k]=i.dataset[sel].split(".");D[arr][n][k]=i.type=="number"?+i.value:i.value;save()};i.oninput=f;i.onchange=f});
+  bind("sl","slides");bind("p","products");
+  document.querySelectorAll("[data-cat]").forEach(i=>i.onchange=()=>{const o=D.categories[i.dataset.cat];D.categories[i.dataset.cat]=i.value;D.products.forEach(p=>{if(p.cat==o)p.cat=i.value});D.slides.forEach(p=>{if(p.cat==o)p.cat=i.value});save()});
+  document.querySelectorAll("[data-fp]").forEach(f=>f.onchange=()=>f.files[0]&&shrink(f.files[0],u=>{D.products[+f.dataset.fp].img=u;save();rp()}));
+  document.querySelectorAll("[data-fs]").forEach(f=>f.onchange=()=>f.files[0]&&shrink(f.files[0],u=>{const x=D.slides[+f.dataset.fs];x.type="image";x.src=u;save();rp()}));
+  const del=(a,arr)=>document.querySelectorAll(`[data-${a}]`).forEach(b=>b.onclick=()=>{D[arr].splice(+b.dataset[a],1);save();rp()});
+  del("ds","slides");del("dc","categories");del("dp","products");
+  const mv=(a,d)=>document.querySelectorAll(`[data-${a}]`).forEach(b=>b.onclick=()=>{const i=+b.dataset[a],j=i+d;if(j<0||j>=D.slides.length)return;[D.slides[i],D.slides[j]]=[D.slides[j],D.slides[i]];save();rp()});
+  mv("up",-1);mv("dn",1);
+}
+load();
+</script>
+</body>
+</html>
